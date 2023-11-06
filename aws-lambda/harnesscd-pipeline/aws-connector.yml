@@ -1,0 +1,22 @@
+connector:
+  name: aws-lambda
+  identifier: awslambda
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: default_project
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKey: AWS_ACCESS_KEY
+        secretKeyRef: awssecret
+      region: CLOUD_REGION_NAME
+    awsSdkClientBackOffStrategyOverride:
+      type: FixedDelayBackoffStrategy
+      spec:
+        fixedBackoff: 0
+        retryCount: 1
+    delegateSelectors:
+      - DELEGATE_NAME
+    executeOnDelegate: true
